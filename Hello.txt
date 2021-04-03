@@ -1,3 +1,4 @@
 Hello World
 
-This is the changed project
+This is the changed project.
+
