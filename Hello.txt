@@ -1,5 +1,9 @@
 Hello World
 
+<<<<<<< HEAD
 This is the changed project.
 Another change added.
 
+=======
+This is the changed project we made.
+>>>>>>> 8f1794d3295aca301b6f95a7c4c446259d9ba29a
