@@ -1,3 +1,9 @@
 Hello World
 
+<<<<<<< HEAD
 This is the changed project we made.
+=======
+This is the changed project.
+Another change added.
+
+>>>>>>> refs/remotes/origin/main
