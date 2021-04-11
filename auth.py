@@ -49,7 +49,7 @@ def register():
     email = input('Please enter your email address: \n')
     first_name = input('Please enter your first name: \n')
     last_name = input('Please enter your last name: \n')
-    password = input('Please create a password for yourself: \n')
+    password = input('Please create a password for your account: \n')
 
     accountNumber = generateAccountNumber()
 
