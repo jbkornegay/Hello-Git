@@ -28,10 +28,7 @@ def login():
         if accountNumber == accountNumberFromUser:
             if userDetails[3] == password:
                 print('\nWelcome %s %s\n' % (userDetails[0], userDetails[1] ) )
-                bankOperations()
-            # else:
-            #     print('Invalid password.')
-            #     login()
+                bankOperations()           
     else:
         print('Invalid account number or password.\n')
         login()
@@ -56,19 +53,6 @@ def generateAccountNumber():
 
     return random.randrange(1111111111,9999999999)
 
-
-    
-    # name = input("What is your name? \n")
-    # allowedUsers = ['Jarla','Seyi','Mike']
-    # allowedPassword = ['passwordJarla','passwordSeyi','passwordMike']
-
-    # if name in allowedUsers:
-    #     password = input("Your password? \n")
-    #     userId = allowedUsers.index(name)
-    #     if password == allowedPassword[userId]:        
-    #         print(dateTime)
-    #         print('Welcome %s' % name)
-
 def bankOperations():
     print('Please select from the following options: ')
     print('1.  Withdrawal')
@@ -78,31 +62,21 @@ def bankOperations():
     selectedOption = int(input('Please enter your selection: \n'))
 
     if selectedOption == 1:
-        #print('You selected %s' % selectedOption)
         withdrawalOperation()
             
     elif selectedOption == 2:
-        #print('You selected %s' % selectedOption)
         depositOperation()
     
     elif selectedOption == 3:
-        #print('You selected %s' % selectedOption)
         complaintOperation()
     
     elif selectedOption == 4:
-        #print('You selected %s' % selectedOption)
         print('Have a nice day!')
         exit()
 
     else:
         print('Invalid Option selected, please try again.')
         bankOperations()
-
-
-# else:
-#     print('Password Incorrect, please try again.')
-# else:
-# print('Invalid user, please try again.')
           
 def withdrawalOperation():
     
