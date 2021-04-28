@@ -1,3 +1,4 @@
+
 import datetime as dt
 import random
 import auth_files
@@ -37,8 +38,10 @@ def login():
 
         if user:
             auth_files.create_file(account_number_from_user)
-            print("Welcome %s %s " % (user[0], user[1]))
-            bank_operations(account_number_from_user)
+            print("\nWelcome %s %s " % (user[0], user[1]))
+            balance = user[4]
+            print("\nYour current balance is :  ", balance, '\n')
+            bank_operations(account_number_from_user, balance)
 
         else:
             print("Invalid account or password")
@@ -76,7 +79,7 @@ def generate_account_number():
     return random.randrange(1111111111, 9999999999)
 
 
-def bank_operations(user_account_number):
+def bank_operations(user_account_number, balance):
 
     print('Please select from the following options: ')
     print('1.  Withdrawal')
@@ -86,68 +89,53 @@ def bank_operations(user_account_number):
     selected_option = int(input('Please enter your selection: \n'))
 
     if selected_option == 1:
-        withdrawal_operation(user_account_number)
+        withdrawal_operation(user_account_number, balance)
 
     elif selected_option == 2:
-        deposit_operation(user_account_number)
+        deposit_operation(user_account_number, balance)
 
     elif selected_option == 3:
-        complaint_operation(user_account_number)
+        complaint_operation(user_account_number, balance)
 
     elif selected_option == 4:
         logout(user_account_number)
 
     else:
         print('Invalid Option selected, please try again.')
-        bank_operations(user_account_number)
+        bank_operations(user_account_number, balance)
 
 
-def withdrawal_operation(user_account_number):
+def withdrawal_operation(user_account_number, balance):
+    
     withdrawal = int(input('How much would you like to withdraw? \n'))
-    record_path = "data/user_record/"
-    f = open(record_path + str(user_account_number) + ".txt", )
-    user_record = f.readline()
-    user_list = user_record.split(",")
+    
+    if int(balance) >= withdrawal:
 
-    if int(user_list[4]) >= withdrawal:
-
-        current_balance = int(user_list[4]) - withdrawal
-        f.close()
-        user_list[4] = str(current_balance)
-        user_string = ",".join(user_list)
-        f = open(record_path + str(user_account_number) + ".txt", "w")
-        f.write(user_string)
-        f.close()
-        print('\nYour current balance is: ', current_balance)
+        current_balance = int(balance) - withdrawal
+        database.update_balance(user_account_number, current_balance)
+        print('\nYour current balance is: ', current_balance, '\n')
         print('Please take your cash.\n')
-        bank_operations(user_account_number)
+        bank_operations(user_account_number, current_balance)
 
     else:
         print("The withdrawal amount exceeds your current balance.")
-        bank_operations(user_account_number)
+        bank_operations(user_account_number, balance)
 
 
-def deposit_operation(user_account_number):
-    record_path = "data/user_record/"
+def deposit_operation(user_account_number, balance):
+    
     deposit = int(input("How much would you like to deposit? \n"))
-    f = open(record_path + str(user_account_number) + ".txt",)
-    user_record = f.readline()
-    user_list = user_record.split(",")
-    current_balance = int(user_list[4]) + deposit
-    f.close()
-    user_list[4] = str(current_balance)
-    user_string = ",".join(user_list)
-    f = open(record_path + str(user_account_number) + ".txt", "w")
-    f.write(user_string)
-    f.close()
+    
+    current_balance = int(balance) + deposit
+    database.update_balance(user_account_number, current_balance)
     print('\nYour current balance is: ', current_balance, '\n')
-    bank_operations(user_account_number)
+    bank_operations(user_account_number, current_balance)
 
 
-def complaint_operation(user_account_number):
+def complaint_operation(user_account_number, balance):
     input('What issue would you like to report? \n')
     print('\nThank you for contacting us.\n')
-    bank_operations(user_account_number)
+    bank_operations(user_account_number, balance)
 
 
 def logout(user_account_number):
