@@ -42,12 +42,12 @@ def create(user_account_number, first_name, last_name, email, password):
 
     else:
 
-        f.write(str(user_data));
+        f.write(str(user_data))
         completion_state = True
 
     finally:
 
-        f.close();
+        f.close()
         return completion_state
 
 
@@ -144,5 +144,15 @@ def authenticated_user(account_number, password):
     return False
 
 
-def get_existing_balance(user_account_number):
-    print("existing balance")
+def update_balance(user_account_number, new_balance):
+    user = str.split(read(user_account_number), ',')
+    user[4] = str(new_balance)
+    user_string = ",".join(user)
+    f = open(user_db_path + str(user_account_number) + ".txt", "w")
+    f.write(user_string)
+    f.close()
+    return
+    
+
+
+

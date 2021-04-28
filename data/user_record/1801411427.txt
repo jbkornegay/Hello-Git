@@ -1,1 +1,1 @@
-jane,doe,janedoe@email.com,password,65
+jane,doe,janedoe@email.com,password,300
