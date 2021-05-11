@@ -2,7 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Hello-Git" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/django_project/first_django_project" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/django_project/simple_django_project/SimpleDjangoApp" vcs="Git" />
   </component>
