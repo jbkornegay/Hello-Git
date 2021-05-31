@@ -1,5 +1,6 @@
 class Category:
     # constructor
+    # test for merge conflict
     def __init__(self, category, amount):
         self.category = category 
         self.amount = amount
