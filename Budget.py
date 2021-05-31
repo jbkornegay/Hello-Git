@@ -1,6 +1,5 @@
 class Category:
     # constructor
-    # test for merge conflict
     def __init__(self, category, amount):
         self.category = category 
         self.amount = amount
@@ -19,9 +18,7 @@ class Category:
         
         else:
             return True
-     # this is a third test to try and create a merge conflict.
-     # this is a fourth test to try and create a merge conflict.
-
+     
     def withdraw(self, amount):
 
         balance_check = self.check_balance(amount)
